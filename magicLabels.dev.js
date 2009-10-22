@@ -1,9 +1,14 @@
 /*
 name: 		    magicLabels.js
-version: 	    0.5
+version: 	    0.6
 dependencies:	jQuery (only tested on 1.3.2, but should work on 1.2.6 as well)
 
-how to use: 	Add "magicLabels" class to any form you want to apply it to.
+how to use: 	simply add the script reference: 
+				
+				
+				<script src="jquery.magiclabels.js"></script>
+				
+				then call magicLabels function that now exists in jquery
 
 what it does:	1. Hides <label> text from visible <input type="text"> and <textarea> elements as 
 				   value attributes.
@@ -23,107 +28,100 @@ what it does:	1. Hides <label> text from visible <input type="text"> and <textar
 
 console.log("imported");
 
-function initMagicLabels(formSelector) {
-	console.log(formSelector);
-	
-	if (!formSelector){
-		console.log("using default form selector");
-		formSelector = "form.magicLabels";
-	}
-	
-	var formObject = $(formSelector);
-	var textSelector = formSelector + " input:text:visible, " + formSelector + " textarea:visible";
-	
-	console.log(formObject);
-	
-	console.log($(textSelector).length);
-	
-	// check to see if any forms should be modified
-	// this avoids extra processing if doesn't exist
-	if (formObject.length == 0){
-		console.log("no forms found");
-		return false;
-	}
-	
-	//find and set values of inputs
-	$(textSelector).each(function(){
-		var oField = $(this);
+(function($) {
+	$.fn.magicLabels = function(settings){
+		var formSelector = this.selector;
+		var textSelector = formSelector + " input:text:visible, " + formSelector + " textarea:visible";
 		var labelText = 0;
 		
-		
-		
-		labelText = getLabelValue(oField);
-		
-		if (!isModified(oField)) {
-			oField.val(labelText);
-		}
-		
-		console.log(labelText);
-	});
-	
-	//register focus events
-	$(textSelector).focus(function () {
-		var oField = $(this);	
-		
-		if (isModified(oField)){
-			return false;
-		}
-		else {	
-			oField.val('');
-		}
-		oField.removeClass("labelText");
-	});
-	
-	//register blur events
-	$(textSelector).blur(function () {	
-		var oField = $(this);
 				
-		if (isModified(oField)){
-			return false;
-		}
-		else {
-			oField.val(getLabelValue(oField));
-		}
-	});
-	
-	// register form event so we can clean out our label values before submitting
-	$(formSelector).submit(function () {	
-		var formObject = $(this);
+		console.log(formSelector);
 		
+		//find and set values of inputs
 		$(textSelector).each(function(){
-			oField = $(this);
-			// if it's not modified delete values
-			if(!isModified(oField)) {
-				oField.val('');
+			var oField = $(this);
+			var labelText = 0;
+			
+			labelText = getLabelValue(oField);
+			
+			if (!isModified(oField)) {
+				oField.val(labelText);
 			}
 			
+			console.log(labelText);
 		});
-		return true;		
-	});
-	
-	function getLabelValue(oField){
-		var id = oField.attr('id');
-		var oLabel = $(formSelector + " label[for = " + id + "]");
-		var content = oLabel.html();
+			
+		//register blur events
+		$(textSelector).blur(function (){	
+			var oField = $(this);
+					
+			if (isModified(oField)){
+				return false;
+			}
+			else {
+				oField.val(getLabelValue(oField));
+			}
+		});
 		
-		oLabel.hide();
-		return content;
-	}
-	
-	function isModified(oField){
-		var value = oField.attr("value");
-		
-		//see if field's value is blank
-		if (value == '' || value == getLabelValue(oField)) {
-			// is not modified
-			oField.addClass("labelText");
-			return false;
-		}
-		else {
-			// is modified
+		//register focus events
+		$(textSelector).focus(function () {
+			var oField = $(this);	
+			
+			if (isModified(oField)){
+				return false;
+			}
+			else {	
+				oField.val('');
+			}
 			oField.removeClass("labelText");
-			return true;
-		}		
-	}
-}
+		});
+		
+		$(formSelector).submit(function () {	
+			var formObject = $(this);
+			
+			$(textSelector).each(function(){
+				oField = $(this);
+				// if it's not modified delete values
+				if(!isModified(oField)) {
+					oField.val('');
+				}
+				
+			});
+			return true;		
+		});
+	
+		
+		
+		
+		
+		// get's label value for field object
+		function getLabelValue(oField){
+			var id = oField.attr('id');
+			var oLabel = $(formSelector + " label[for = " + id + "]");
+			var content = oLabel.html();
+			
+			oLabel.hide();
+			return content;
+		}
 
+
+		// determines if a field is blank or has been modified
+		function isModified(oField){
+			var value = oField.attr("value");
+			
+			//see if field's value is blank
+			if (value == '' || value == getLabelValue(oField)) {
+				// is not modified
+				oField.addClass("labelText");
+				return false;
+			}
+			else {
+				// is modified
+				oField.removeClass("labelText");
+				return true;
+			}		
+		}
+		
+		return this;
+	};
+})(jQuery);
