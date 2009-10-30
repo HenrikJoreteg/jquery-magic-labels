@@ -3,13 +3,6 @@ name: 		    magicLabels.js
 version: 	    0.6
 dependencies:	jQuery (only tested on 1.3.2, but should work on 1.2.6 as well)
 
-how to use: 	simply add the script reference: 
-				
-				
-				<script src="jquery.magiclabels.js"></script>
-				
-				then call magicLabels function that now exists in jquery
-
 what it does:	1. Hides <label> text from visible <input type="text"> and <textarea> elements as 
 				   value attributes.
 				
@@ -24,6 +17,18 @@ what it does:	1. Hides <label> text from visible <input type="text"> and <textar
 				   		input.labelText, textarea.labelText { color:#AAA; }
 				
 				5. With JS disabled, form remains accessible.
+
+how to use: 	simply add the script reference: 
+				
+				<script src="jquery.magiclabels.js"></script>
+				
+				Then call magicLabels function with a selector identifying the form you want to
+				use it on. Like this: 
+				
+				$(document).ready(function(){
+					$(".magicLabels").magicLabels();
+				});
+				
 */
 
 console.log("imported");
@@ -80,7 +85,7 @@ console.log("imported");
 			var formObject = $(this);
 			
 			$(textSelector).each(function(){
-				oField = $(this);
+				var oField = $(this);
 				// if it's not modified delete values
 				if(!isModified(oField)) {
 					oField.val('');
@@ -90,10 +95,6 @@ console.log("imported");
 			return true;		
 		});
 	
-		
-		
-		
-		
 		// get's label value for field object
 		function getLabelValue(oField){
 			var id = oField.attr('id');
@@ -104,12 +105,11 @@ console.log("imported");
 			return content;
 		}
 
-
 		// determines if a field is blank or has been modified
 		function isModified(oField){
 			var value = oField.attr("value");
 			
-			//see if field's value is blank
+			// see if field's value is blank
 			if (value == '' || value == getLabelValue(oField)) {
 				// is not modified
 				oField.addClass("labelText");
