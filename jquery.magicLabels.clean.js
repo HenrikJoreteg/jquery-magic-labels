@@ -1,7 +1,7 @@
 /*
 author:			Henrik Joreteg	
 name: 		    magicLabels.clean.js
-version: 	    0.6
+version: 	    0.6.1
 dependencies:	jQuery (only tested on 1.3.2, but should work on 1.2.6 as well)
 usage:
 $(function(){

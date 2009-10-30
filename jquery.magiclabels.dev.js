@@ -1,6 +1,6 @@
 /*
 name: 		    magicLabels.js
-version: 	    0.6
+version: 	    0.6.1
 dependencies:	jQuery (only tested on 1.3.2, but should work on 1.2.6 as well)
 
 what it does:	1. Hides <label> text from visible <input type="text"> and <textarea> elements as 
