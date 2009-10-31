@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.magiclabels.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(form).magicLabels();
+        });
+    </script>
+    <style>
+        input.labelText, textarea.labelText {color:#AAA;}
+    </style>
+    </head>
+    <body>
+        <form id="form">
+            <label for="nameField">Your Name</label>
+            <input type="text" name="nameField" id="nameField" class="magicLabels" value=""/><br/>
+            <label for="emailField">Your Email</label>
+            <input type="text" name="emailField" id="emailField" value=""/><br/>
+            <input type="checkbox" id="check"><label for="check">Check this box</label><br/>
+            <label for="message">Enter some text please</label><br/>
+            <textarea id="message" name="message"></textarea><br/>
+            <br/><br/>
+            <input type="submit" name="submit"/>
+        </form>
+    </body>
+</html>
