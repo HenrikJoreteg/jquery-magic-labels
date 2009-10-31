@@ -21,19 +21,22 @@ title: Home
 <h2>Install</h2>
 <p>simply add the script reference after your import jquery:</p>
 
+<p>
 {% highlight html %}
     <script src="jquery.js"></script>
     <script src="jquery.magiclabels.min.js"></script>
 {% endhighlight %}
+</p>
 
 <p>Then call <code>magicLabels()</code> function with a selector identifying the form you want to use it on. Like this:</p>
+<p>
 {% highlight javascript %}
     $(document).ready(function(){
-        // using form as an example but could be any selector to identify the form
-        // to apply this to.
         $("form").magicLabels();
     });
 {% endhighlight %}
+</p>
+<p>**NOTE: in this example I'm using "form", but it can be any valid selector as long as it grabs a forms you wish to apply the effect to.</p>
 
 <h2>License</h2>
 <p>BSD License</p>
