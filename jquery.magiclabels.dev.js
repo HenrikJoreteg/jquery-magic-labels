@@ -1,34 +1,11 @@
 /*
-name: 		    magicLabels.js
-version: 	    0.6.1
-dependencies:	jQuery (only tested on 1.3.2, but should work on 1.2.6 as well)
+Copyright (c) 2009, Henrik Joreteg
+All rights reserved.
 
-what it does:	1. Hides <label> text from visible <input type="text"> and <textarea> elements as 
-				   value attributes.
-				
-				2. Clears label values on focus event and resets unmodified values on blur event.
-				
-				3. Removes label text on form submit.
-				
-				4. Adds and removes "labelText" class to elements as necessary. This lets you style
-				   the label text differently whether the content is modified or not. 
-				   
-				   sample css:
-				   		input.labelText, textarea.labelText { color:#AAA; }
-				
-				5. With JS disabled, form remains accessible.
+jQuery Magic Labels v0.6.2
 
-how to use: 	simply add the script reference: 
-				
-				<script src="jquery.magiclabels.js"></script>
-				
-				Then call magicLabels function with a selector identifying the form you want to
-				use it on. Like this: 
-				
-				$(document).ready(function(){
-					$(".magicLabels").magicLabels();
-				});
-				
+Released under the BSD license, read it here:
+http://projects.joreteg.com/licenses/BSD.html
 */
 
 console.log("imported");

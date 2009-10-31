@@ -1,13 +1,13 @@
 /*
-author:			Henrik Joreteg	
-name: 		    magicLabels.clean.js
-version: 	    0.6.1
-dependencies:	jQuery (only tested on 1.3.2, but should work on 1.2.6 as well)
-usage:
-$(function(){
-	$('_any_jquery_form_selector_').magicLabels();
-});
+Copyright (c) 2009, Henrik Joreteg
+All rights reserved.
+
+jQuery Magic Labels v0.6.2
+
+Released under the BSD license, read it here:
+http://projects.joreteg.com/licenses/BSD.html
 */
+
 (function($) {
 	$.fn.magicLabels = function(settings){
 		var formSelector = this.selector;
