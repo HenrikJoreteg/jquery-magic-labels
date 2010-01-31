@@ -19,19 +19,16 @@ You can also clone the project with [Git](http://git-scm.com) by running:
     
     $ git clone git://github.com/HenrikJoreteg/jquery-magic-labels
 
-
 ## Dependencies
 jQuery 1.2.6 or later should work
 
 ## Install
-simply add the script reference after your import jquery:
-
+simply add the script reference after you import jquery:
 
 {% highlight html %}
 <script src="jquery.js"></script>
 <script src="jquery.magiclabels.min.js"></script>
 {% endhighlight %}
-
 
 Then call `magicLabels()` function with a selector identifying the form you want to use it on. Like this:
 
@@ -45,9 +42,3 @@ $(document).ready(function(){
 
 ## License
 [BSD License](http://projects.joreteg.com/licenses/BSD.html)
-
-## About the developer
-<a href="http://joreteg.com">http://joreteg.com</a><br/>
-<a href="http://twitter.com/HenrikJoreteg">@HenrikJoreteg</a><br/>
-<a href="mailto:hjoreteg@gmail.com">hjoreteg@gmail.com</a><br/>
-678.223.3445
